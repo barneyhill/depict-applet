@@ -1,0 +1,23 @@
+dx build depict-applet-src -f
+dx run depict-applet \
+                -i anc=$anc \
+                -i populations_file="/data/populations.tsv" \
+                -i QC_ids=/data/05_export_to_vcf/ukb_wes_450k.qced.sample_list.txt \
+                -i chrom=$chr \
+                -i test_type=$test_type \
+                -i group_file="/data/annotations/ukb_wes_450k.qced.brava.v1.saige_group.chr"$chr".worst_csq_by_gene_canonical.txt.gz" \
+                -i genotype_bed="/Bulk/Genotype Results/Genotype calls/ukb22418_c"$chr"_b0_v2.bed" \
+                -i genotype_bim="/Bulk/Genotype Results/Genotype calls/ukb22418_c"$chr"_b0_v2.bim" \
+                -i genotype_fam="/Bulk/Genotype Results/Genotype calls/ukb22418_c"$chr"_b0_v2.fam" \
+                -i exome_bed=/data/05_export_to_plink/ukb_wes_450k.qced.chr$chr.bed \
+                -i exome_bim=/data/05_export_to_plink/ukb_wes_450k.qced.chr$chr.bim \
+                -i exome_fam=/data/05_export_to_plink/ukb_wes_450k.qced.chr$chr.fam \
+                -i pheno_list=/Laura/phenos/UKBB_WES_Infertility_EUR_ONLY.txt \
+                -i pheno="$pheno" \
+                -i sex=$sex \
+                -i GRM=/saige_pipeline/data/00_set_up/ukb_array.wes_450k_qc_pass_allpop.pruned_relatednessCutoff_0.05_5000_randomMarkersUsed.sparseGRM.mtx \
+                -i GRM_samples=/saige_pipeline/data/00_set_up/ukb_array.wes_450k_qc_pass_allpop.pruned_relatednessCutoff_0.05_5000_randomMarkersUsed.sparseGRM.mtx.sampleIDs.txt \
+                -i covariates="age,age2,PC1,PC2,PC3,PC4,PC5,PC6,PC7,PC8,PC9,PC10,PC11,PC12,PC13,PC14,PC15,PC16,PC17,PC18,PC19,PC20,PC21" \
+                -i categorical_covariates="" \
+                -i trait_type="binary" \
+                --instance-type "mem3_ssd1_v2_x4" --priority low --destination / -y --name "DEPICT"
